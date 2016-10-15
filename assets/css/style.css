@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css?family=Orbitron:400,700');
+
+body {
+    font-family: 'Orbitron';
+    background-image: url(../images/deathstarwallpaper.png);
+    background-attachment: fixed;
+    background-size: auto;
+    background-repeat: no-repeat;
+}
+
+h1 {
+    font-size: 3em;
+    font-weight: 800;
+    color: #ffe200;
+    -webkit-text-fill-color: black;
+    -webkit-text-stroke: .05em;
+    border: 5px solid #ffe200;
+    border-bottom-left-radius: 1em;
+    border-top-right-radius: 1em;
+    padding: 20px;
+    margin: 5px auto;
+}
+
+h3 {
+    font-size: 2em;
+    color: red;
+}
+
+h4 {
+    font-size: 1em;
+    font-weight: 600;
+    color: steelblue;
+}
+
+header {
+    box-shadow: 0px 10px 30px green;
+    color: #ffe200;
+    text-align: center;
+    height: auto;
+    padding: 10px 20px;
+}
+
+.container {
+    margin: 40px auto;
+    margin-bottom: 20px;
+    max-width: 700px;
+    height: 100%;
+    position: relative;
+}
+
+.hangman {
+    background-color: rgba(169, 169, 169, 0.41);
+    width: 200px;
+    height: 200px;
+    float: left;
+    border: 4px solid #5f5656;
+    border-radius: 2em;
+    padding: 10px;
+    margin: auto;
+}
+
+.stats {
+    background-color: rgba(169, 169, 169, 0.41);
+    width: 200px;
+    height: 120px;
+    float: left;
+    clear: left;
+    border: 4px solid #5f5656;
+    border-radius: 2em;
+    line-height: 50px;
+    padding: 10px;
+    margin: 10px auto;
+    text-align: center;
+}
+
+
+
+.game {
+    background-color: rgba(169, 169, 169, 0.41);
+    border: 4px solid #5f5656;
+    border-radius: 2em;
+    float: right;
+    padding: 10px;
+    margin: 5px;
+    max-width: 380px;
+}
+
+.game h3 {
+    background-color: rgba(169, 169, 169, 0.4);
+    border: 2px solid red;
+    border-radius: 20px;
+    padding: 10px 5px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#blankSpaces {
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.41);
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.userInput {
+    text-align:center;
+}
+
+.userInput button {
+    background-color: steelblue;
+    border: none;
+    color: #fff;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+footer {
+    background-color: #ccc;
+    box-shadow: 0px -10px 50px red;
+    clear: both;
+    height: auto;
+    width: 100%;
+    line-height: 20px;
+    padding: 5px;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+}
+
+@media only screen and (max-width: 645px){
+    .container {
+        margin: 20px 30px;
+    }
+    
+    .hangman {
+        width: 90%;
+        margin: auto;
+    }
+    
+    .stats {
+        width: 90%;
+        color: green;
+    }
+    
+    footer {
+        position: relative;
+    }
+}

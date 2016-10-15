@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="Web game of Hangman with a star-wars theme">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="assets/css/reset.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+        
+        <title>A Star Wars Hangman Game</title>
+    </head>
+    
+    <body>
+        <header>Star <h1>Force Chokeman</h1> Wars</header>
+        
+        <div class="container">
+              <div class="hangman">
+                  <img id="hangman" src="assets/images/" alt="Force choke pics">
+              </div>
+              
+              <section class="game">
+                <h3>Press any button to start!</h3>
+                
+                <div class="output">
+                      <h3>Guess the word</h3>
+                      <div id="blankSpaces"></div>
+                </div>
+                
+                <form class="userInput">
+                    <input>
+                    <br>
+                    <button>Enter</button>
+                </form>
+              </section>
+                
+              <section class="stats">
+                  <h4>Wins:</h4>
+                  <span id="wins"></span>
+                  <h4>Previous Guesses</h4>
+                  <div id="guesses"></div>
+              </section>
+        </div>
+        
+        <footer>all characters and IP is wholley owned by Lucasfilms.ltd and Walt Disney Company.©2016</footer>
+        
+        <script type="text/javascript" src="assets/javascript/game.js"></script>
+    </body>
+</html>
