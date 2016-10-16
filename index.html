@@ -12,11 +12,12 @@
     </head>
     
     <body>
-        <header>Star <h1>Force Chokeman</h1> Wars</header>
+        <header>Star <h1>Force Choke</h1> Wars</header>
         
         <div class="container">
               <div class="hangman">
-                  <img id="hangman" src="assets/images/" alt="Force choke pics">
+                  <h2><span></span></h2>
+                  <h2 id='message'></h2>
               </div>
               
               <section class="game">
@@ -27,22 +28,20 @@
                       <div id="blankSpaces"></div>
                 </div>
                 
-                <form class="userInput">
-                    <input>
-                    <br>
-                    <button>Enter</button>
-                </form>
+                <div id="playerInput"></div>
               </section>
                 
               <section class="stats">
-                  <h4>Wins:</h4>
-                  <span id="wins"></span>
+                  <h4>Wins: <span id="wins"></span></h4>
+                  <h4>Losses: <span id="losses"></span></h4>
+                  <h4>Turns left: <span id="turns"></span></h4>
                   <h4>Previous Guesses</h4>
-                  <div id="guesses"></div>
+                  <div><p id="guesses"></p></div>
               </section>
+              
         </div>
         
-        <footer>all characters and IP is wholley owned by Lucasfilms.ltd and Walt Disney Company.©2016</footer>
+        <footer>all characters and intellectual property is wholley owned by Lucasfilms.ltd and Walt Disney Company ©2016</footer>
         
         <script type="text/javascript" src="assets/javascript/game.js"></script>
     </body>

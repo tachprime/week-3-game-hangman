@@ -2,7 +2,7 @@
 
 body {
     font-family: 'Orbitron';
-    background-image: url(../images/deathstarwallpaper.png);
+    background-image: url(../images/swwallpaper.png);
     background-attachment: fixed;
     background-size: auto;
     background-repeat: no-repeat;
@@ -11,10 +11,10 @@ body {
 h1 {
     font-size: 3em;
     font-weight: 800;
-    color: #ffe200;
+    color: #ffba00;
     -webkit-text-fill-color: black;
     -webkit-text-stroke: .05em;
-    border: 5px solid #ffe200;
+    border: 5px solid #ffba00;
     border-bottom-left-radius: 1em;
     border-top-right-radius: 1em;
     padding: 20px;
@@ -23,18 +23,19 @@ h1 {
 
 h3 {
     font-size: 2em;
-    color: red;
+    color: #ffba00;
 }
 
 h4 {
-    font-size: 1em;
-    font-weight: 600;
-    color: steelblue;
+    font-size: 1.2em;
+    font-weight: 700;
+    color: #fff;
 }
 
 header {
-    box-shadow: 0px 10px 30px green;
-    color: #ffe200;
+    background-color: #000000;
+    box-shadow: 0px 10px 50px blue;
+    color: #ffba00;
     text-align: center;
     height: auto;
     padding: 10px 20px;
@@ -49,23 +50,37 @@ header {
 }
 
 .hangman {
-    background-color: rgba(169, 169, 169, 0.41);
+    background-color: rgba(32, 38, 178, 0.41);
+    background-image: url(../images/vaderGameover.jpg);
+    background-size: 350px 250px; 
+    background-position: right bottom;
+    border: 4px solid steelblue;
+    border-radius: 2em;
+    float: left;
+    margin: auto;
+    padding: 10px;
     width: 200px;
     height: 200px;
-    float: left;
-    border: 4px solid #5f5656;
-    border-radius: 2em;
-    padding: 10px;
-    margin: auto;
+    text-align: center;
+}
+
+.hangman h2 {
+    color: red;
+    font-size: 2em;
+    line-height: 70px;
+}
+
+#message {
+    color: #ffba00;
 }
 
 .stats {
-    background-color: rgba(169, 169, 169, 0.41);
+    background-color: rgba(32, 38, 178, 0.41);
     width: 200px;
-    height: 120px;
+    height: auto;
     float: left;
     clear: left;
-    border: 4px solid #5f5656;
+    border: 4px solid steelblue;
     border-radius: 2em;
     line-height: 50px;
     padding: 10px;
@@ -73,11 +88,31 @@ header {
     text-align: center;
 }
 
+#wins {
+    color: #ffba00;
+    font-size: 1.8em;
+    font-weight: 700;
+}
 
+#guesses {
+    color: darkred;
+    font-size: 1.9em;
+    font-weight: 700;
+    line-height: 20px;
+}
+
+#losses {
+    color: red;
+    font-size: 1.5em;
+}
+
+#turns {
+    color: steelblue;
+}
 
 .game {
-    background-color: rgba(169, 169, 169, 0.41);
-    border: 4px solid #5f5656;
+    background-color: rgba(32, 38, 178, 0.41);
+    border: 4px solid steelblue;
     border-radius: 2em;
     float: right;
     padding: 10px;
@@ -86,8 +121,8 @@ header {
 }
 
 .game h3 {
-    background-color: rgba(169, 169, 169, 0.4);
-    border: 2px solid red;
+    background-color: rgba(32, 38, 178, 0.41);
+    border: 2px solid #ffba00;
     border-radius: 20px;
     padding: 10px 5px;
     margin-bottom: 20px;
@@ -95,32 +130,23 @@ header {
 }
 
 #blankSpaces {
-    height: 40px;
     background-color: rgba(0, 0, 0, 0.41);
     color: #fff;
+    height: 40px;
+    line-height: 50px;
     margin-bottom: 20px;
-}
-
-.userInput {
-    text-align:center;
-}
-
-.userInput button {
-    background-color: steelblue;
-    border: none;
-    color: #fff;
-    margin-top: 10px;
-    padding: 10px;
+    text-align: center;
 }
 
 footer {
-    background-color: #ccc;
+    background-color: #000;
     box-shadow: 0px -10px 50px red;
+    color: #fff;
     clear: both;
     height: auto;
     width: 100%;
     line-height: 20px;
-    padding: 5px;
+    padding: 10px;
     position: absolute;
     bottom: 0;
     text-align: center;
@@ -132,6 +158,7 @@ footer {
     }
     
     .hangman {
+        font-size: 1.5em;
         width: 90%;
         margin: auto;
     }
