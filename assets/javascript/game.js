@@ -6,7 +6,8 @@ var turns = 5;
 var TURN_LIMIT = 1;
 var guesses = [];
 var blanks = [];
-var wordChoices = ["deathstar", "tattooine", "leia", "lightsaber", "yoda", "luke", "jabba", "naboo",                      "lando"];
+var wordChoices = ["deathstar", "tattooine", "leia", "lightsaber", "yoda", "luke", "jabba", "naboo", "lando"];
+
 //Class to act as handler for modifying HTML page
 var Page = {
     //set selector id's to class variables
@@ -64,12 +65,13 @@ function displayBlanks() {
 
 
 function replaceBlank(playerInput) {
-    var letter = word.indexOf(playerInput);
+    //var letter = word.indexOf(playerInput);
     //blanks = blanks.substr(0, letter) + playerInput + blanks.substr(letter + playerInput.length);
-    //insertLetter(blanks);
+    
+    //loop through to find duplicate letters;
     for (var i = 0; i < word.length; i++) {
         if (playerInput == word.charAt(i)) {
-            blanks[i] = word.charAt(letter);
+            blanks[i] = word.charAt(i);
         }
     }
     Page.updateBlanks(blanks);
