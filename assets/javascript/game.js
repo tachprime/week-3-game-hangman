@@ -147,7 +147,7 @@ function playGame() {
             Page.updateMessage("NOOOoooo!!");
             var track = Math.floor(Math.random() * 3);
             AudioSeletor.tracks[track].play();
-            reset();
+            setTimeout(reset, 500);
         }
         
         Page.updateWins(wins);
