@@ -8,6 +8,16 @@ var guesses = [];
 var blanks = [];
 var wordChoices = ["deathstar", "tattooine", "leia", "lightsaber", "yoda", "luke", "jabba", "naboo", "lando"];
 
+var AudioSeletor = {
+    firstTrack: null,
+    secondTrack: null,
+    thirdTrack: null,
+    tracks: [],
+    setTrack: function () {
+        this.tracks = [this.firstTrack,this.secondTrack,this.thirdTrack];
+    },
+};
+
 //Class to act as handler for modifying HTML page
 var Page = {
     //set selector id's to class variables
@@ -82,6 +92,14 @@ function insertGuess(playerInput) {
     Page.updateGuesses(guesses);
 }
 
+function init() {
+    AudioSeletor.firstTrack = new Audio("assets/audio/vaderFailme.wav");
+    AudioSeletor.secondTrack = new Audio("assets/audio/vaderFaith.wav");
+    AudioSeletor.thirdTrack = new Audio("assets/audio/yodaTry.wav");
+    AudioSeletor.setTrack();
+    playGame();
+}
+
 function reset() {
     guesses = [];
     Page.updateGuesses(guesses);
@@ -127,6 +145,8 @@ function playGame() {
             losses++;
             Page.updateWord(word);
             Page.updateMessage("NOOOoooo!!");
+            var track = Math.floor(Math.random() * 3);
+            AudioSeletor.tracks[track].play();
             reset();
         }
         
