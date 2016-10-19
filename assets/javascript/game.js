@@ -1,21 +1,57 @@
+//Global initilizations
 var wins = 0;
 var losses = 0;
 var word;
 var turns = 5;
+var TURN_LIMIT = 1;
 var guesses = [];
-var blanks = ["_"];
-var wordChoices = ["deathstar", "tattooine", "leia", "lightsaber", "yoda", "luke", "jabba", 
-                   "naboo", "lando"];
+var blanks = [];
+var wordChoices = ["deathstar", "tattooine", "leia", "lightsaber", "yoda", "luke", "jabba", "naboo",                      "lando"];
+//Class to act as handler for modifying HTML page
+var Page = {
+    //set selector id's to class variables
+    winID: "#wins",
+    lossID: "#losses",
+    turnID: "#turns",
+    guessID: "#guesses",
+    blankSpaceID: "#blankSpaces",
+    wordID: "#word",
+    messageID: "#message",
+    
+    //class functions
+    insertHtml: function (gameVar, id) {
+        return document.querySelector(id).innerHTML = gameVar;
+    },
+    updateWins: function (gameVar) {
+        this.insertHtml(gameVar, this.winID);
+    },
+    updateLosses: function (gameVar) {
+        this.insertHtml(gameVar, this.lossID);
+    },
+    updateTurns: function(gameVar){
+        this.insertHtml(gameVar, this.turnID);
+    },
+    updateGuesses: function(gameVar) {
+        this.insertHtml(gameVar, this.guessID);
+    },
+    updateBlanks: function(gameVar) {
+        this.insertHtml(gameVar, this.blankSpaceID);
+    },
+    updateWord: function(gameVar) {
+        this.insertHtml(gameVar, this.wordID);
+    },
+    updateMessage: function(gameVar) {
+        this.insertHtml(gameVar, this.messageID);
+    }
+};
 
 function getWord() {
     word = wordChoices[Math.floor(Math.random() * wordChoices.length)];
-    //console.log(word);
 }
 
 function isAletter(playerInput) {
-    var letter = word.indexOf(playerInput);
-    if (playerInput === word[letter]) {
-        return true;
+    if (word.indexOf(playerInput) !== -1){
+      return true;
     }
 }
 
@@ -23,7 +59,7 @@ function displayBlanks() {
     for (var i = 0; i < word.length; i++) {
         blanks[i] = "_";
     }
-    insertHtml(blanks, '#blankSpaces');
+    Page.updateBlanks(blanks);
 }
 
 
@@ -36,36 +72,32 @@ function replaceBlank(playerInput) {
             blanks[i] = word.charAt(letter);
         }
     }
-    insertHtml(blanks, '#blankSpaces');
-}
-
-
-function insertHtml(localVar,id) {
-    return document.querySelector(id).innerHTML = localVar;
+    Page.updateBlanks(blanks);
 }
 
 function insertGuess(playerInput) {
     guesses.push(playerInput);
-    insertHtml(guesses, '#guesses');
+    Page.updateGuesses(guesses);
 }
 
 function reset() {
     guesses = [];
-    insertGuess(" ");
+    Page.updateGuesses(guesses);
     blanks = [];
     turns = 5;
-    insertHtml(turns, '#turns');
+    Page.updateTurns(turns);
     playGame();
 }
 
 function playGame() {
+    
     getWord();
     displayBlanks();
     
     document.onkeyup = function (event) {
       var playerInput = String.fromCharCode(event.keyCode).toLowerCase();
         
-        if (turns > 1) {
+        if (turns > TURN_LIMIT) {
             if (isAletter(playerInput)) {
                 
                 replaceBlank(playerInput);
@@ -75,27 +107,29 @@ function playGame() {
                 turns--;
             }
             
-            //checks if any blanks left if not player wins
+            //checks if any blanks are left if not player wins, reset game
             if (blanks.indexOf("_") == -1) {
                 wins++;
-                insertHtml(word,'.hangman span');
-                if(wins < 5){ 
-                    insertHtml("Impressive!", '#message');
+                Page.updateWord(word);
+                //update win message
+                if(wins <= 5){ 
+                    Page.updateMessage("Impressive!");
                 } else {
-                    insertHtml("Most Impressive!", '#message');
+                    //update player ego
+                    Page.updateMessage("Most Impressive!");
                 }
-                setTimeout(reset,500);
+                //pause before reset for half a second
+                setTimeout(reset, 500);
             }  
         } else {
             losses++;
-            insertHtml("NOOOoooo!!",'#message');
+            Page.updateWord(word);
+            Page.updateMessage("NOOOoooo!!");
             reset();
         }
         
-        insertHtml(wins, '#wins');
-        insertHtml(losses, '#losses');
-        insertHtml(turns, "#turns");
+        Page.updateWins(wins);
+        Page.updateLosses(losses);
+        Page.updateTurns(turns);
     }
 }
-
-playGame();

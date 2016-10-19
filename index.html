@@ -11,16 +11,16 @@
         <title>A Star Wars Hangman Game</title>
     </head>
     
-    <body>
+    <body onload="playGame()">
         <header>Star <h1>Force Choke</h1> Wars</header>
         
         <div class="container">
-              <div class="hangman">
-                  <h2><span></span></h2>
-                  <h2 id='message'></h2>
+              <div class="hangman infoBox">
+                  <h2><span id="word">Use the Force</span></h2>
+                  <h2 id="message">Fear Not</h2>
               </div>
               
-              <section class="game">
+              <section class="game infoBox">
                 <h3>Press any button to start!</h3>
                 
                 <div class="output">
@@ -31,7 +31,7 @@
                 <div id="playerInput"></div>
               </section>
                 
-              <section class="stats">
+              <section class="stats infoBox">
                   <h4>Wins: <span id="wins"></span></h4>
                   <h4>Losses: <span id="losses"></span></h4>
                   <h4>Turns left: <span id="turns"></span></h4>
