@@ -5,8 +5,8 @@ var word;
 var turns = 5;
 var TURN_LIMIT = 1;
 var guesses = [];
-var blanks = [];
-var wordChoices = ["deathstar", "tattooine", "leia", "lightsaber", "yoda", "luke", "jabba", "naboo", "lando"];
+var blanks = null;
+var wordChoices = ["deathstar", "x wing", "leia", "lightsaber", "yoda", "luke", "jabba the hutt", "tie fighter", "lando"];
 
 var AudioSeletor = {
     firstTrack: null,
@@ -61,27 +61,34 @@ function getWord() {
 }
 
 function isAletter(playerInput) {
-    if (word.indexOf(playerInput) !== -1){
+    if (word.includes(playerInput)){
       return true;
     }
 }
 
 function displayBlanks() {
     for (var i = 0; i < word.length; i++) {
-        blanks[i] = "_";
+        //add first letter
+        if(blanks == null){
+            blanks = "_";
+        }
+        else if (word.charAt(i) == " ") {
+            blanks += " ";
+        }else {
+            blanks += "_";   
+        }   
     }
+    console.log(blanks);
     Page.updateBlanks(blanks);
 }
 
 
 function replaceBlank(playerInput) {
-    //var letter = word.indexOf(playerInput);
-    //blanks = blanks.substr(0, letter) + playerInput + blanks.substr(letter + playerInput.length);
-    
     //loop through to find duplicate letters;
     for (var i = 0; i < word.length; i++) {
         if (playerInput == word.charAt(i)) {
-            blanks[i] = word.charAt(i);
+            //blanks[i] = word.charAt(i);
+            blanks = blanks.substr(0, i) + playerInput + blanks.substr(i + playerInput.length);
         }
     }
     Page.updateBlanks(blanks);
@@ -103,7 +110,7 @@ function init() {
 function reset() {
     guesses = [];
     Page.updateGuesses(guesses);
-    blanks = [];
+    blanks = null;
     turns = 5;
     Page.updateTurns(turns);
     playGame();
@@ -128,7 +135,7 @@ function playGame() {
             }
             
             //checks if any blanks are left if not player wins, reset game
-            if (blanks.indexOf("_") == -1) {
+            if (!blanks.includes("_")) {
                 wins++;
                 Page.updateWord(word);
                 //update win message
@@ -146,7 +153,9 @@ function playGame() {
             Page.updateWord(word);
             Page.updateMessage("NOOOoooo!!");
             var track = Math.floor(Math.random() * 3);
-            AudioSeletor.tracks[track].play();
+            if(AudioSeletor.tracks[track] !== null) {
+                AudioSeletor.tracks[track].play();
+            }
             setTimeout(reset, 500);
         }
         
